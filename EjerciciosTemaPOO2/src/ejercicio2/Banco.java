@@ -28,9 +28,20 @@ public class Banco {
 	 * @return the cuentaCorriente
 	 */
 	public List<CuentaBancaria> getCuentaCorriente() {
-		return cuentaCorriente;
+		return this.cuentaCorriente;
 	}
-
+	
+	/**
+	 * Método que comprueba si existe el numero de cuenta en la lista para añadirlo o no
+	 * @param objeto tipo CuentaBancaria
+	 * @return si se repite o no el numero de cuenta
+	 */
+	public boolean existeNumeroCuenta(CuentaBancaria c){
+		boolean aux = false;
+		if (this.cuentaCorriente.contains(c))
+			aux = true;
+		return aux;
+	}
 
 	/**
 	 * Metodo que elimina una cuenta del banco

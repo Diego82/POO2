@@ -1,7 +1,11 @@
-package ejercicio1;
+/**
+ * @author Diego Jesús Torres Peinado
+ * @version 1.1
+ * 
+ * Comprobacion del funcionamiento de las clases Banco y CuentaBancaria
+ */
 
-import ejercicio2.Banco;
-import ejercicio2.CuentaBancaria;
+package ejercicio2;
 
 public class TestCuentas {
 
@@ -17,11 +21,24 @@ public class TestCuentas {
 		Banco b1 = new Banco();
 		
 		//Añadimos las cuentas creadas
-		b1.addCuenta(cc1);
-		b1.addCuenta(cc2);
 		b1.addCuenta(cc3);
 		b1.addCuenta(cc4);
-		b1.addCuenta(cc5);
+		
+		if (!b1.existeNumeroCuenta(cc1)) 
+			b1.addCuenta(cc1);
+
+		if (!b1.existeNumeroCuenta(cc2))
+			b1.addCuenta(cc2);
+
+		if (!b1.existeNumeroCuenta(cc3))
+			b1.addCuenta(cc3);
+		
+		if (!b1.existeNumeroCuenta(cc4))
+			b1.addCuenta(cc4);
+		
+		if (!b1.existeNumeroCuenta(cc5))
+			b1.addCuenta(cc5);
+
 		System.out.println(b1);
 		
 		//Comprobamos el funcionamiento de las clases
@@ -38,6 +55,9 @@ public class TestCuentas {
 		b1.getCuentaCorriente().get(1).depositarDinero(0.8);
 		System.out.println(b1.getCuentaCorriente().get(1));
 		
+		//Eliminamos el numero de cuenta cc5
+		b1.deleteCuenta(cc5);		
+		System.out.println(b1);
 		
 		
 
