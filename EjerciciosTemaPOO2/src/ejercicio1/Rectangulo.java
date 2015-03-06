@@ -26,7 +26,7 @@ public class Rectangulo {
 	}
 	
 	public double getPerimentro(){
-		return alto*2+ancho*2;
+		return (alto+ancho)*2;
 	}
 	
 	public static int getNumeroRectangulosCreados(){
@@ -34,10 +34,17 @@ public class Rectangulo {
 	}
 	
 	public static class GetNumeroRectangulosCreados{
-		public static int getNumeroRectangulosCreados2(){
+		public static int getNumeroRectangulosCreados(){
 			return contadorRectangulos;
 		}
-		
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Rectangulo alto: " + alto + ", ancho: " + ancho;
 	}
 	
 }

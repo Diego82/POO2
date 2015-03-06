@@ -158,14 +158,18 @@ public class CuentaBancaria {
 		
 		public int primerDigitoControl(){
 			int digito = 0;
-			int[] array = {4,8,5,10,9,7,3,6};
+			int[] array1 = {4,8,5,10};
+			int[] array2 = {9,7,3,6};
+			int j = 0;
 			for (int i = 0; i < ENTIDAD.length(); i++) {
-				digito += Integer.parseInt(ENTIDAD.substring(i,i+1))*array[i];
+				digito += Integer.parseInt(ENTIDAD.substring(i,i+1))*array1[i];
+				digito += Integer.parseInt(OFICINA.substring(i,i+1))*array2[i];
 			}
 			
-			if (((11-digito%11) == 11) || ((11-digito%11) == 10)) {
+			if ((11-digito%11) == 11)
+				digito = 0;
+			else if ((11-digito%11) == 10)
 				digito = 1;
-			}
 			else
 				digito = 11 - digito%11;
 			
@@ -179,9 +183,10 @@ public class CuentaBancaria {
 				digito += Integer.parseInt(numeroCuentaAleatorio.substring(i,i+1))*array[i];
 			}
 			
-			if (((11-digito%11) == 11) || ((11-digito%11) == 10)) {
+			if ((11-digito%11) == 11)
+				digito = 0;
+			else if ((11-digito%11) == 10)
 				digito = 1;
-			}
 			else
 				digito = 11 - digito%11;
 			

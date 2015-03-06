@@ -23,9 +23,12 @@ public class EquipoFutbol {
 	}
 	
 	private static String x = "EquipoFutbol";
-
+	public enum Posicion{
+		PORTERO,DEFENSA,MEDIOCENTRO,DELANTERO
+	}
 		//Método que tiene una clase interna
 		void hacerEquipo(){
+			
 			class Jugador{
 				private String nombre;
 				private Posicion demarcacion;
@@ -35,9 +38,7 @@ public class EquipoFutbol {
 					System.out.println("metodo local : Valor de x es " + x);
 					
 				}
-				public enum Posicion{
-					PORTERO,DEFENSA,MEDIOCENTRO,DELANTERO
-				}
+				
 			}
 			Jugador jugador = new Jugador();
 			jugador.MetodoInterno();

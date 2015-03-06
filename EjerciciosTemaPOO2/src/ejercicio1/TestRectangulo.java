@@ -7,8 +7,9 @@ public class TestRectangulo {
 		Rectangulo r3 = new Rectangulo();
 		System.out.println("Numero de rectangulos creados: "+Rectangulo.getNumeroRectangulosCreados());
 		Rectangulo r4 = new Rectangulo();
-		System.out.println("Numero de rectangulos creados: "+Rectangulo.GetNumeroRectangulosCreados.getNumeroRectangulosCreados2());
-
-		
+		System.out.println("Numero de rectangulos creados: "+Rectangulo.GetNumeroRectangulosCreados.getNumeroRectangulosCreados());
+		System.out.println(r1);
+		System.out.println(r2);
+		System.out.println(r3);		
 	}
 }
