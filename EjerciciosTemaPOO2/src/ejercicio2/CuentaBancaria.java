@@ -49,12 +49,6 @@ public class CuentaBancaria {
 		return saldo;
 	}
 	/**
-	 * @param saldo the saldo to set
-	 */
-	public void setSaldo(double saldo) {
-		this.saldo = saldo;
-	}
-	/**
 	 * @return the interes
 	 */
 	public double getInteres() {
@@ -66,12 +60,7 @@ public class CuentaBancaria {
 	public void setInteres(double interes) {
 		this.interes = interes;
 	}
-	/**
-	 * @return the fecha de creacion
-	 */
-	public LocalDate getFechaCreacion() {
-		return fechaCreacion;
-	}
+
 	public static int getNumeroCuentasCreadas(){
 		return cuentasCreadas;
 	}
@@ -81,7 +70,7 @@ public class CuentaBancaria {
 	 * @return saldo despues del ingreso
 	 */
 	public void depositarDinero(double ingreso){
-		setSaldo(this.saldo+ingreso);
+		this.saldo+=ingreso;
 	}
 	/**
 	 * 
@@ -139,13 +128,12 @@ public class CuentaBancaria {
 	public class CrearNumeroCuenta{
 		String ENTIDAD="1234";
 		String OFICINA = "5678";
-		String digitoControl;
 		String numeroCuentaAleatorio;
 		
 		//Constructor
 		public CrearNumeroCuenta(){
 			numeroCuentaAleatorio = numeroCuentaAleatorio();
-			numeroCuenta = ENTIDAD+"-"+OFICINA+"-"+primerDigitoControl()+segundoDigitoControl()+"-"+numeroCuentaAleatorio();
+			numeroCuenta = ENTIDAD+"-"+OFICINA+"-"+primerDigitoControl()+segundoDigitoControl()+"-"+numeroCuentaAleatorio;
 		}
 		
 		public String numeroCuentaAleatorio(){
