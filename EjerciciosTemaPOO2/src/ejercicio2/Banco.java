@@ -22,7 +22,8 @@ public class Banco {
 	 * @param c
 	 */
 	public void addCuenta(CuentaBancaria c){
-		this.cuentaCorriente.add(c);
+		if (!this.cuentaCorriente.contains(c))
+			this.cuentaCorriente.add(c);
 	}
 	/**
 	 * @return the cuentaCorriente
@@ -30,58 +31,58 @@ public class Banco {
 	public List<CuentaBancaria> getCuentaCorriente() {
 		return this.cuentaCorriente;
 	}
-	
-	/**
-	 * Método que comprueba si existe el numero de cuenta en la lista para añadirlo o no
-	 * @param objeto tipo CuentaBancaria
-	 * @return si se repite o no el numero de cuenta
-	 */
-	public boolean existeNumeroCuenta(CuentaBancaria c){
-		boolean aux = false;
-		if (this.cuentaCorriente.contains(c))
-			aux = true;
-		return aux;
-	}
 
 	/**
 	 * Metodo que elimina una cuenta del banco
 	 * @param c
 	 */
 	public void deleteCuenta(CuentaBancaria c){
-		this.cuentaCorriente.remove(c);
+		if (!this.cuentaCorriente.contains(c))
+			this.cuentaCorriente.remove(c);
 	}
+	
 	/**
-	 * Metodo que devuelve el mayor saldo de todas las cuentas
-	 * @return el mayor saldo de todas las cuentas
+	 * 
+	 * @return devuelve una lista con las cuentas con mayor saldo
 	 */
-	public double saldoMayor(){
-		double mayor = Integer.MIN_VALUE;
-		for (int i = 0; i < cuentaCorriente.size(); i++) {
-			if(cuentaCorriente.get(i).getSaldo()>mayor){
-				mayor = cuentaCorriente.get(i).getSaldo();
-			}
+	public List<CuentaBancaria> cuentasMayorSaldo(){
+		List<CuentaBancaria> lista = new ArrayList<CuentaBancaria>();
+		double saldoMayor = Double.MIN_VALUE;
+		for (CuentaBancaria cuentaBancaria : cuentaCorriente) {
+			if (cuentaBancaria.getSaldo()>saldoMayor)
+				saldoMayor = cuentaBancaria.getSaldo();
 		}
-		return mayor;
+		for (CuentaBancaria cuentaBancaria : cuentaCorriente) {
+			if (cuentaBancaria.getSaldo()==saldoMayor)
+				lista.add(cuentaBancaria);
+		}
+		return lista;
 	}
+	
 	/**
-	 * Metodo que devuelve el mayor saldo de todas las cuentas
-	 * @return el mayor saldo de todas las cuentas
+	 * 
+	 * @return devuelve una lista con las cuentas con mayor saldo
 	 */
-	public double saldoMenor(){
-		double menor = Integer.MAX_VALUE;
-		for (int i = 0; i < cuentaCorriente.size(); i++) {
-			if(cuentaCorriente.get(i).getSaldo()<menor){
-				menor = cuentaCorriente.get(i).getSaldo();
-			}
+	public List<CuentaBancaria> cuentasMenorSaldo(){
+		List<CuentaBancaria> lista = new ArrayList<CuentaBancaria>();
+		double SaldoMenor = Double.MAX_VALUE;
+		for (CuentaBancaria cuentaBancaria : cuentaCorriente) {
+			if (cuentaBancaria.getSaldo()<SaldoMenor)
+				SaldoMenor = cuentaBancaria.getSaldo();
 		}
-		return menor;
+		for (CuentaBancaria cuentaBancaria : cuentaCorriente) {
+			if (cuentaBancaria.getSaldo()==SaldoMenor)
+				lista.add(cuentaBancaria);
+		}
+		return lista;
 	}
+	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Banco cuentaCorriente: " + cuentaCorriente.toString();
+		return "Banco cuentaCorriente:\n" + cuentaCorriente.toString();
 	}
 	
 	public void getSaldoMedioYNumeroCuentas(){
@@ -91,7 +92,7 @@ public class Banco {
 	 * Metodo que devuelve el saldo medio de todas las cuentas del banco
 	 * @return
 	 */
-	public double saldoMedioCuentas(){
+	private double saldoMedioCuentas(){
 		double suma = 0;
 		int i = 0;
 		for (i = 0; i < cuentaCorriente.size(); i++) {
